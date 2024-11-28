@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {PencilIcon,TrashIcon} from '@primer/octicons-react'
 import React, { useState, useEffect } from 'react';
 import {useDispatch,useSelector} from 'react-redux';
-import AddBookModal from './components/AddBookModal';
 import EditBookModal from './components/EditBookModal';
 import ConfirmDeleteModal from './components/ConfirmDeleteModal';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -54,7 +53,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar/> 
+        <Navbar handleAdd={handleAdd}/> 
         <div className="container mt-4">
           <h2>Books</h2>
           <ul className="list-group">
@@ -66,9 +65,10 @@ function App() {
                 <div className="d-flex justify-content-between">
                   <div>
                     <h5>{book.title}</h5>
-                    <p>{book.author}</p>
-                    <p><strong>Published Date:</strong> {new Date(book.published_date).toLocaleDateString()}<br/></p>
-                    <p>{book.description}</p>
+                    <p>{book.description}</p> 
+                    <p><strong>By: {book.author}</strong></p>
+                    
+                    <p><strong>Published Date:</strong> { book.published_date && new Date(book.published_date).toLocaleDateString()}<br/></p>
                     <button className="btn btn-warning m-2" onClick={() => {setSelectedBook(book);setShowEditModal(true);}}><PencilIcon size={16}/> Edit</button>
                     <button className="btn btn-danger m-2" onClick={() => {setSelectedBook(book);setShowDeleteModal(true);}}><TrashIcon size={16}/> Delete</button>
                   </div>

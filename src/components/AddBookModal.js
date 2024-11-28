@@ -24,26 +24,26 @@ function AddBookModal({ show, handleClose, handleAdd }) {
         <Form>
           <Form.Group controlId="formTitle">
             <Form.Label>Title</Form.Label>
-            <Form.Control type="text" name="title" onChange={handleChange} />
-          </Form.Group>
-          <Form.Group controlId="formAuthor" className="mt-2">
-            <Form.Label>Author</Form.Label>
-            <Form.Control type="text" name="author" onChange={handleChange} />
+            <Form.Control type="text" name="title" onChange={handleChange}/>
           </Form.Group>
           <Form.Group controlId="formDescription" className="mt-2">
             <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows={3} name="description" onChange={handleChange} />
+            <Form.Control as="textarea" rows={3} name="description" onChange={handleChange}/>
           </Form.Group>
+          <Form.Group controlId="formAuthor" className="mt-2">
+            <Form.Label>Author</Form.Label>
+            <Form.Control type="text" name="author" onChange={handleChange}/>
+          </Form.Group>
+
           <Form.Group controlId="formPublishDate" className="mt-2">
             <Form.Label>Published Date</Form.Label>
-            <Form.Control type="date" name="published_date" onChange={handleChange}
-            />
+            <Form.Control type="date" name="published_date" onChange={handleChange}/>
           </Form.Group>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>Cancel</Button>
+      <Modal.Footer style={{justifyContent: "flex-start"}}>
         <Button variant="primary" onClick={handleSubmit}>Add Book</Button>
+        <Button variant="secondary" onClick={handleClose}>Cancel</Button>
       </Modal.Footer>
     </Modal>
   );
